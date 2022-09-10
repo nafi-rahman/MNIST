@@ -22,11 +22,14 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(10,activation='sigmoid')
 ])
 
+#compile the model
 model.compile(optimizer='adam',loss = 'sparse_categorical_crossentropy',metrics=['accuracy'])
+#train the model
 model.fit(x_train,y_train,epochs=10)
-
+#evaluate the model / test the model with the test data
 model.evaluate(x_test,y_test)
 
-plt.matshow(x_test[0])
+#predict a number using the trained model
 y_predicted = model.predict(x_test)
+#print the predicted number
 print(np.argmax(y_predicted[0]))
